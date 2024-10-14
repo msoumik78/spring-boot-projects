@@ -14,9 +14,9 @@ public class DemoSpringBootApp {
 
   @Bean
   public CommandLineRunner createTables(JdbcTemplate jdbcTemplate) {
-    return createStatement -> jdbcTemplate.update("Create table users " +
-      "(id bigint auto_increment,user_name VARCHAR(50), " +
-      "password VARCHAR(100), full_name  VARCHAR(100))");
+    return createStatement -> jdbcTemplate.update("Create table tasks " +
+      "(id bigint auto_increment, task_name VARCHAR(50), " +
+      "task_description VARCHAR(100), task_completion_percentage int, task_end_date date)");
   }
 
 }
