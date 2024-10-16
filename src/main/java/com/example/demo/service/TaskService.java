@@ -34,8 +34,8 @@ public class TaskService {
     }
     iTaskDao.createTask(task);
   }
-  public List<String> getAllTasks() {
-    return iTaskDao.getAllTasks();
+  public List<String> getAllTasks(int userId) {
+    return iTaskDao.getAllTasks(userId);
   }
   public Task getTaskDetails(int taskId) {
     try {

@@ -8,7 +8,7 @@ public interface ITaskDao {
   void createTask(Task task);
   Task getTaskDetails(int taskId);
   void updateTaskDetails(int taskId, Task task);
-  List<String> getAllTasks();
+  List<String> getAllTasks(int userId);
 
   void deleteTask(int taskId);
 }

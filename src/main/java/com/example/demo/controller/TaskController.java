@@ -35,9 +35,9 @@ public class TaskController {
     taskService.updateTask(taskId,task);
   }
 
-  @GetMapping("/tasks")
-  List<String> getAllTasks() {
-    return taskService.getAllTasks();
+  @GetMapping("/users/{userId}/tasks")
+  List<String> getAllTasksForUser(@PathVariable("userId") final int userId) {
+    return taskService.getAllTasks(userId);
   }
 
   @GetMapping("/tasks/{taskId}")

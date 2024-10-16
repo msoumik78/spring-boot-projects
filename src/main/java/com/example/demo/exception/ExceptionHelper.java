@@ -12,4 +12,9 @@ public class ExceptionHelper  extends ResponseEntityExceptionHandler {
   public ResponseEntity<Object> handleInvalidInputException(InvalidInputException ex) {
     return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
   }
+
+  @ExceptionHandler(value = { PasswordMismatchException.class })
+  public ResponseEntity<Object> handleWrongPassword(PasswordMismatchException ex) {
+    return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
+  }
 }
