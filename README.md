@@ -25,20 +25,13 @@ Has 2 services as follows:
 # How to create user
 - Execute the below command to create a sample task
   (`curl -w "%{http_code}"  -H 'Content-Type: application/json' -d  '{"userName":"msoumik","password":"password123", "fullName": "Soumik Mukherjee"}' -X POST http://localhost:8085/api/1/users`)
-- Execute the below command to simulate login with correct credentials
-  (`curl -w "%{http_code}"  -H 'Content-Type: application/json' -d  '{"userName":"msoumik","password":"password123"}' -X POST http://localhost:8085/api/1/user-credentials`)
+- Execute the below command to simulate login with correct credentials (this will print all headers including the Authorization headers in response which contains the JWT. Copy that.)
+  (`curl -v  -H 'Content-Type: application/json' -d  '{"userName":"msoumik","password":"password123"}' -X POST http://localhost:8085/api/1/user-credentials`)
 
 
-# How to create and retrieve tasks per user
+# How to create and retrieve tasks per user (need to copy the jwt obtained during login for calling the tasks related endpoints )
 - Execute the below commands to create some sample tasks for an user (note that the task json contains an user)
-  (`curl -H 'Content-Type: application/json' -w "%{http_code}"  -d  '{"taskName":"task 1","taskDescription":"task description 1", "taskCompletionPercentage": 10, "userId": 1}' -X POST http://localhost:8085/api/1/tasks`)
-  (`curl -H 'Content-Type: application/json' -w "%{http_code}"  -d  '{"taskName":"task 2","taskDescription":"task description 2", "taskCompletionPercentage": 10, "userId": 1}' -X POST http://localhost:8085/api/1/tasks`)
-  (`curl -H 'Content-Type: application/json' -w "%{http_code}"  -d  '{"taskName":"task 3","taskDescription":"task description 3", "taskCompletionPercentage": 10, "userId": 1}' -X POST http://localhost:8085/api/1/tasks`)
-  (`curl -H 'Content-Type: application/json' -w "%{http_code}"  -d  '{"taskName":"task 4","taskDescription":"task description 4", "taskCompletionPercentage": 10, "userId": 1}' -X POST http://localhost:8085/api/1/tasks`)
-- Execute the below command to retrieve all tasks for an user:
-  (`curl -X GET http://localhost:8085/api/1/users/1/tasks`)
-- Execute the below command to retrieve details of a specific task:
-  (`curl -X GET http://localhost:8085/api/1/tasks`)
+  (`curl -H 'Content-Type: application/json' -w "%{http_code}" -H "x-jwt-user:eyJraWQiOiIxMjMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2MyaWQuY29tIiwidXNlck5hbWUiOiJtc291bWlrIiwiZXhwIjoxNzI5MTM1OTI3LCJ1c2VySWQiOjF9.3J6fIvnIbLpVk68PB_w3Lm_bUHOlE9vDSqlOSiKl1elqY3wayiZoZHL9LqiW6T_xSMKkaxf6TCgfHHaaJwCmoIvUjK3ZZvNZkxNwUcPAGnzqeJXnPOxk8ryGcoaCtzDr_lVOlslO1xm8kbaxffRwLmf6cucfLrKyfznWciyfQTHCyt7nO5HQqSZe7ogfde43Xv24m3ov-PXywgB-sh6dI875Zv1rn3LQvatVD5p2S9yCXSO8IEwBbBCXo12gSPs8IYGsdg6cgfAlkm2akMGBal3nZNd13ZrWlF00hGcR7HmmPoZfecAQ6Yl1Q14nIHZmYaUf3U2A5Lr8M22AlRBp-g" -d  '{"taskName":"task 1","taskDescription":"task description 1", "taskCompletionPercentage": 10, "userId": 1}' -X POST http://localhost:8085/api/1/tasks`)
 
 
 
