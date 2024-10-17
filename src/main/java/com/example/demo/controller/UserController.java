@@ -28,9 +28,12 @@ public class UserController {
 
   @PostMapping("/user-credentials")
   ResponseEntity<User> getUserDetailsFromCredentials(@RequestBody LoginDetails loginDetails) throws JOSEException {
+    System.out.println("In usrercontroller.getUserDetailsFromCredentials.....1........");
     User user = userService.getUserDetailsFromCredentials(loginDetails.getUserName(),
       loginDetails.getPassword());
+    System.out.println("In usrercontroller.getUserDetailsFromCredentials.....2........");
     String jwtAsString = userService.generateJWT(user);
+    System.out.println("In usrercontroller.getUserDetailsFromCredentials.....3........");
     return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, jwtAsString).body(user);
   }
 
