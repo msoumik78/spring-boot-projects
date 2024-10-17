@@ -3,9 +3,11 @@ package com.example.demo.controller;
 import com.example.demo.model.LoginDetails;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
+import com.nimbusds.jose.JOSEException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +27,11 @@ public class UserController {
   }
 
   @PostMapping("/user-credentials")
-  User getUserDetailsFromCredentials(@RequestBody LoginDetails loginDetails) {
-    return userService.getUserDetailsFromCredentials(loginDetails.getUserName(), loginDetails.getPassword());
+  ResponseEntity<User> getUserDetailsFromCredentials(@RequestBody LoginDetails loginDetails) throws JOSEException {
+    User user = userService.getUserDetailsFromCredentials(loginDetails.getUserName(),
+      loginDetails.getPassword());
+    String jwtAsString = userService.generateJWT(user);
+    return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, jwtAsString).body(user);
   }
 
 }
