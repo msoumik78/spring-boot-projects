@@ -30,8 +30,8 @@ Has 2 services as follows:
 
 
 # How to create and retrieve tasks per user (need to copy the jwt obtained during login for calling the tasks related endpoints )
-- Execute the below commands to create some sample tasks for an user (note that the task json contains an user)
-  (`curl -H 'Content-Type: application/json' -w "%{http_code}" -H "x-jwt-user:eyJraWQiOiIxMjMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2MyaWQuY29tIiwidXNlck5hbWUiOiJtc291bWlrIiwiZXhwIjoxNzI5MTM1OTI3LCJ1c2VySWQiOjF9.3J6fIvnIbLpVk68PB_w3Lm_bUHOlE9vDSqlOSiKl1elqY3wayiZoZHL9LqiW6T_xSMKkaxf6TCgfHHaaJwCmoIvUjK3ZZvNZkxNwUcPAGnzqeJXnPOxk8ryGcoaCtzDr_lVOlslO1xm8kbaxffRwLmf6cucfLrKyfznWciyfQTHCyt7nO5HQqSZe7ogfde43Xv24m3ov-PXywgB-sh6dI875Zv1rn3LQvatVD5p2S9yCXSO8IEwBbBCXo12gSPs8IYGsdg6cgfAlkm2akMGBal3nZNd13ZrWlF00hGcR7HmmPoZfecAQ6Yl1Q14nIHZmYaUf3U2A5Lr8M22AlRBp-g" -d  '{"taskName":"task 1","taskDescription":"task description 1", "taskCompletionPercentage": 10, "userId": 1}' -X POST http://localhost:8085/api/1/tasks`)
+- Execute the below commands to create some sample tasks for an user (replace the jwt below with the freshly created jwt that you had obtained while validated credentials)
+ (`curl -H 'Content-Type: application/json' -w "%{http_code}" -H "x-jwt-user:eyJraWQiOiIxMjMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2MyaWQuY29tIiwidXNlck5hbWUiOiJtc291bWlrIiwiZXhwIjoxNzI5MzI3MTIwLCJ1c2VySWQiOjF9.iRfD7svxRSggCw_HhiJDpJvU-LrTcPvlO6jtWA8cc0tXJa5L4dKg2eRr701h1yfyfzCzIiruYfLNRCjhGdN3AT5qAZW-P9faVZvf_YoQGprShAqVdmwVk9_OfqeEKW4VYvJNpcn818sNdbMPyu-UBJVnHU3WJbZkKmDY0d-rfslWdU-vz2pQqaJVInx8rXm0lYUkr9UryDYJrPacbIqN7kwIhAXEXtZxMYav6AZgwSsdFoHgXm3Jj3EprheiR2D-juJKjw6S66EHUZy1D13-OTIZxD6BmSAWoHCCAbZkd-Wiz9PI2AI5gYW4_wdb0U29ZKN3JYlb-fjUIb8fF5s2OQ"  -d  '{"taskName":"task 1","taskDescription":"task description 1", "taskCompletionPercentage": 10, "userId": 1}' -X POST http://localhost:8085/api/1/tasks`)
 
 
 
